@@ -1,5 +1,6 @@
 import React from "react";
 import Select from "react-select";
+
 const options = [
   { label: "Africa", value: "Africa" },
   { label: "Americas", value: "Americas" },
@@ -33,7 +34,7 @@ const themes = (theme) => {
     },
   };
 };
-function ReactSelect({ data, setDataObj }) {
+function ReactSelect({ data, setDataObj, theme }) {
   const selectChangeHandler = (e) => {
     const value = e.value;
     const filteredResults = data.filter((country) => country.region === value);
@@ -46,7 +47,7 @@ function ReactSelect({ data, setDataObj }) {
         styles={customStyles}
         onChange={selectChangeHandler}
         theme={themes}
-        menuColor="inherit"
+        menuColor={theme === "dark" ? "#202c37" : "#fff"}
         className="react-select"
         placeholder="Filter by region"
       />
